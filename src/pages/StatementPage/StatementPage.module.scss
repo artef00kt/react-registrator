@@ -1,0 +1,62 @@
+@import "../../App.scss";
+
+.statementContaineer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 50px 0 0 0;
+    gap: 50px;
+}
+
+.upperContaineer {
+    display: flex;
+    gap: 30px;
+
+}
+
+.searchInp {
+    height: 30px;
+    width: 60vh;
+    border-radius: 20px;
+    border: none;
+    padding: 5px 15px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 20px;
+    // font-weight: 400;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.createBtn {
+    border-radius: 10px;
+    padding: 0 15px;
+    background-color: $base-color;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 600;
+    color: $second-color;
+
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        color: $another-color;
+        transition: 0.2s;
+    }
+}
+
+.cardContaineer {
+    margin: auto;
+    max-width: 1050px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    
+}

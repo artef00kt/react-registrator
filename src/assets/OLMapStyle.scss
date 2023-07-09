@@ -1,0 +1,55 @@
+@import '../App.scss';
+
+@mixin mapNavigateButton {
+    height: 30px;
+    width: 30px;
+    color: $second-color;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: $base-color;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    &:hover {
+        border: solid 2px $another-color;
+        color: $another-color;
+        transition: 0.2s;
+    }
+}
+
+.ol-zoom {
+    padding: 10px 0 0 10px;
+    display: flex;
+    gap: 10px;
+
+    &-in {
+        @include mapNavigateButton;
+    }
+
+    &-out {
+        @include mapNavigateButton;
+    }
+}
+
+.ol-rotate {
+    padding: 10px 0 0 10px;
+
+    &-reset {
+        @include mapNavigateButton;
+    }
+}
+
+.ol-attribution {
+    padding: 10px 0 0 10px;
+    
+    & > button {
+        @include mapNavigateButton;
+    }
+
+    & > ul > li {
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+    }
+}
