@@ -17,6 +17,22 @@ import { Style, Fill, Stroke, Circle } from 'ol/style';
 
 import Popup from 'ol-popup';
 
+function newVectorLayer(source, R, G, B, A) {
+    return new VectorLayer({
+        source: source,
+        style: new Style({
+            image: new Circle({
+                fill: new Fill({color: [255, 255, 255, 1],}),
+                radius: 8,
+                stroke: new Stroke({
+                    color: [R, G, B, A], 
+                    width: 5,
+                }),
+            }),
+        }),
+    });
+}
+
 
 export function MapPage() {
     const {store} = useContext(Context);
@@ -25,25 +41,24 @@ export function MapPage() {
     const mapElement = useRef();
 
     useEffect(() => {
-        let iconFeatures = store.getStatements();
-
-        const source = new VectorSource({
+        const source1 = new VectorSource({
             wrapX: false, 
-            features: iconFeatures,
+            features: store.getStatementsPriority(1),
         });
 
-        const vector = new VectorLayer({
-            source: source,
-            style: new Style({
-                image: new Circle({
-                    fill: new Fill({color: [255, 255, 255, 1],}),
-                    radius: 8,
-                    stroke: new Stroke({
-                        color: [189, 53, 0, 1], 
-                        width: 5,
-                    }),
-                }),
-            }),
+        const source2 = new VectorSource({
+            wrapX: false, 
+            features: store.getStatementsPriority(2),
+        });
+
+        const source3 = new VectorSource({
+            wrapX: false, 
+            features: store.getStatementsPriority(3),
+        });
+
+        const source4 = new VectorSource({
+            wrapX: false, 
+            features: store.getStatementsPriority(4),
         });
 
         const OLmap = new Map({
@@ -52,7 +67,10 @@ export function MapPage() {
                 new TileLayer({
                     source: new OSM(),
                 }),
-                vector,
+                newVectorLayer(source1, 255, 0, 0, 1), //piority 1
+                newVectorLayer(source2, 255, 165, 0, 1), //piority 2
+                newVectorLayer(source3, 255, 255, 0, 1), //piority 3
+                newVectorLayer(source4, 25, 255, 25, 1), //piority 4
             ],
             view: new View({
                 // center: fromLonLat([ 39.70732721786235, 47.23260132167479]),

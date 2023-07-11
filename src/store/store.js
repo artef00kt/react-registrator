@@ -56,6 +56,16 @@ export default class Store {
         return this.statements;
     }
 
+    getStatementsPriority(priority) {
+        const temp = []
+        this.statements.forEach((elem) => {
+            if (+elem.values_.priority.at(-1) === priority) {
+                temp.push(elem);
+            }
+        })
+        return temp;
+    }
+
     getSearch(imp) {
         const temp = [];
         imp = imp.toLowerCase();
